@@ -1,9 +1,11 @@
 package com.myapp.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class AppUtils {
 
@@ -20,17 +22,13 @@ public class AppUtils {
 	}
 
 	public static Integer[] convertIntToIntegerArray(int[] arg) {
-		/*
-		 * Integer[] newArray = new Integer[arg.length]; for (int i = 0; i < arg.length;
-		 * i++) { newArray[i] = Integer.valueOf(arg[i]); }
-		 */
 		return Arrays.stream(arg).boxed().toArray(Integer[]::new);
 	}
-	
+
 	public static Integer[][] convertIntToIntegerArray(int[][] arg) {
 		Integer[][] newArray = new Integer[arg.length][arg.length];
 		for (int i = 0; i < arg.length; i++) {
-			//newArray[i] = Integer.valueOf(arg[i]);
+			// newArray[i] = Integer.valueOf(arg[i]);
 		}
 		return null;
 	}
@@ -42,4 +40,10 @@ public class AppUtils {
 		}
 		return newArray;
 	}
+
+	// Function to get ArrayList from Stream
+	public static <T> ArrayList<T> getArrayListFromStream(Stream<T> stream) {
+		return stream.collect(Collectors.toCollection(ArrayList::new));
+	}
+
 }

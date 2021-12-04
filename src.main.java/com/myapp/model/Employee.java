@@ -8,17 +8,19 @@ public class Employee {
 	private String name;
 	private String department;
 	private Address address;
+	private long salary;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(int id, String name, String department, Address address) {
+	public Employee(int id, String name, String department, Address address, long salary) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.department = department;
 		this.address = address;
+		this.salary = salary;
 	}
 
 	public int getId() {
@@ -53,9 +55,17 @@ public class Employee {
 		this.address = address;
 	}
 
+	public long getSalary() {
+		return salary;
+	}
+
+	public void setSalary(long salary) {
+		this.salary = salary;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, department, id, name);
+		return Objects.hash(address, department, id, name, salary);
 	}
 
 	@Override
@@ -68,12 +78,13 @@ public class Employee {
 			return false;
 		Employee other = (Employee) obj;
 		return Objects.equals(address, other.address) && Objects.equals(department, other.department) && id == other.id
-				&& Objects.equals(name, other.name);
+				&& Objects.equals(name, other.name) && salary == other.salary;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", department=" + department + ", address=" + address + "]";
+		return "Employee [id=" + id + ", name=" + name + ", department=" + department + ", address=" + address
+				+ ", salary=" + salary + "]";
 	}
 
 }

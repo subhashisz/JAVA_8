@@ -20,11 +20,11 @@ public class DataStaticFactory {
 	}
 
 	public static List<Employee> getAllEmployees() {
-		return Arrays.asList(new Employee(1, "Ram", "IT", new Address("Bhubaneswar", "Odissa", "India", 751003)),
-				new Employee(2, "Sam", "IT", new Address("Bombay", "Maharastra", "India", 571103)),
-				new Employee(3, "John", "IT", new Address("Hydrabad", "Telengana", "India", 690013)),
-				new Employee(4, "Hritik", "IT", new Address("Bangalore", "Karnataka", "India", 560054)),
-				new Employee(5, "Arindam", "IT", new Address("Puri", "Odissa", "India", 790013)));
+		return Arrays.asList(new Employee(1, "Ram", "IT", new Address("Bhubaneswar", "Odissa", "India", 751003),25000l),
+				new Employee(2, "Sam", "Mechanical", new Address("Bombay", "Maharastra", "India", 571103),55000l),
+				new Employee(3, "John", "Electrical", new Address("Hydrabad", "Telengana", "India", 690013),75000l),
+				new Employee(4, "Hritik", "Computer", new Address("Bangalore", "Karnataka", "India", 560054),253000l),
+				new Employee(5, "Arindam", "Electronics", new Address("Puri", "Odissa", "India", 560059),253000l));
 	}
 	
 	public List<Integer> getAllZips(){
@@ -33,7 +33,6 @@ public class DataStaticFactory {
 	}
 
 	public List<List<Student>> getStudentList() {
-
 		return null;
 	}
 
