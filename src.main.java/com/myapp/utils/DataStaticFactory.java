@@ -11,6 +11,7 @@ import com.myapp.model.Student;
 import com.myapp.model.ZipList;
 import com.myapp.model.Employee;
 import com.myapp.model.Product;
+import com.myapp.model.ProductDto;
 
 public class DataStaticFactory {
 
@@ -19,16 +20,23 @@ public class DataStaticFactory {
 				new Product(3, "nokia", 29000f), new Product(4, "motorola", 32000f), new Product(5, "LG", 12000f));
 	}
 
-	public static List<Employee> getAllEmployees() {
-		return Arrays.asList(new Employee(1, "Ram", "IT", new Address("Bhubaneswar", "Odissa", "India", 751003),25000l),
-				new Employee(2, "Sam", "Mechanical", new Address("Bombay", "Maharastra", "India", 571103),55000l),
-				new Employee(3, "John", "Electrical", new Address("Hydrabad", "Telengana", "India", 690013),75000l),
-				new Employee(4, "Hritik", "Computer", new Address("Bangalore", "Karnataka", "India", 560054),253000l),
-				new Employee(5, "Arindam", "Electronics", new Address("Puri", "Odissa", "India", 560059),253000l));
+	public static List<ProductDto> getAllProductDto() {
+		return Arrays.asList(new ProductDto(1, "samsung", 22000f), new ProductDto(2, "sony", 25000f),
+				new ProductDto(3, "nokia", 29000f), new ProductDto(4, "motorola", 32000f),
+				new ProductDto(5, "LG", 12000f));
 	}
-	
-	public List<Integer> getAllZips(){
-		List<Integer> zips=Arrays.asList(560054,751003,590034,781906,558933,748943);
+
+	public static List<Employee> getAllEmployees() {
+		return Arrays.asList(
+				new Employee(1, "Ram", "IT", new Address("Bhubaneswar", "Odissa", "India", 751003), 25000l),
+				new Employee(2, "Sam", "Mechanical", new Address("Bombay", "Maharastra", "India", 571103), 55000l),
+				new Employee(3, "John", "Electrical", new Address("Hydrabad", "Telengana", "India", 690013), 75000l),
+				new Employee(4, "Hritik", "Computer", new Address("Bangalore", "Karnataka", "India", 560054), 253000l),
+				new Employee(5, "Arindam", "Electronics", new Address("Puri", "Odissa", "India", 560059), 253000l));
+	}
+
+	public List<Integer> getAllZips() {
+		List<Integer> zips = Arrays.asList(560054, 751003, 590034, 781906, 558933, 748943);
 		return zips;
 	}
 
