@@ -1,4 +1,4 @@
-package com.myapp.utils;
+package com.myapp.datas;
 
 import java.util.ArrayList;
 import java.util.Arrays;

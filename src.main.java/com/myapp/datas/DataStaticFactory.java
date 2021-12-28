@@ -1,19 +1,34 @@
-package com.myapp.utils;
+package com.myapp.datas;
 
-import static com.myapp.utils.AppUtils.convertIntToIntegerArray;
+import static com.myapp.datas.AppUtils.convertIntToIntegerArray;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 import com.myapp.model.Address;
-import com.myapp.model.Student;
-import com.myapp.model.ZipList;
+import com.myapp.model.Dish;
 import com.myapp.model.Employee;
+import com.myapp.model.Fruit;
 import com.myapp.model.Product;
 import com.myapp.model.ProductDto;
+import com.myapp.model.Student;
+import com.myapp.model.Trader;
+import com.myapp.model.Transaction;
 
 public class DataStaticFactory {
+
+	static Trader raoul = new Trader("Raoul", "Cambridge");
+	static Trader mario = new Trader("Mario", "Milan");
+	static Trader alan = new Trader("Alan", "Cambridge");
+	static Trader brian = new Trader("Brian", "Newyork");
+	static Trader miller = new Trader("miller", "Cambridge");
+	static Trader jack = new Trader("jack", "Carlifornia");
+
+	static List<Fruit> inventory = Arrays.asList(new Fruit("Mango", "yelow", .500d),
+			new Fruit("Orange", "orangle", .100d), new Fruit("Peach", "yelow", .300d),
+			new Fruit("Banana", "yelow", .550d), new Fruit("Guava", "Green", .370d), new Fruit("Grape", "black", .190d),
+			new Fruit("Apple", "red", .590d));
 
 	public static List<Product> getAllProducts() {
 		return Arrays.asList(new Product(1, "samsung", 22000f), new Product(2, "sony", 25000f),
