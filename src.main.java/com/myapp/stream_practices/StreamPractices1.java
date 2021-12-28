@@ -51,7 +51,15 @@ public class StreamPractices1 {
 
 		List<String> words1 = Arrays.asList("Hello", "World");
 		// OUTPUT: ["H", "e", "l", "o","W", "r", "d"].
-		words1.stream().map(w -> w.split("")).distinct().collect(toList());
+		
+		//it will return String[] rather then String
+		//words1.stream().map(w -> w.split("")).distinct().forEach(System.out::println);
+		
+		/**
+		 * FALATMAP
+		 */
+		words1.stream().map(w->w.split("")).flatMap(Arrays::stream);
+		
 
 		// From the menu find the sum of all calories of all dishes
 		// menu.stream().filter(Dish::getCalories).collect(Collectors.averagingInt(get))
