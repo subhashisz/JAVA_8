@@ -41,18 +41,17 @@ public class StreamPractices1 {
 		// filter the maximum calories of all dishes
 
 		// Display all the dish names
-		// menu.stream().map(Dish::getDishName).forEach(name -> System.out.print(" " + name));
+		menu.stream().map(Dish::getDishName).collect(toList());
 
 		List<String> words = Arrays.asList("Java8", "Lambdas", "In", "Action");
-		words.stream().map(String::length).forEach(System.out::println);
+		words.stream().map(String::length).collect(toList());
 
 		// Display length of all the dish names
 		menu.stream().map(Dish::getDishName).map(String::length).collect(toList());
-		
-		List<String> words1=Arrays.asList("Hello","World");
+
+		List<String> words1 = Arrays.asList("Hello", "World");
 		// OUTPUT: ["H", "e", "l", "o","W", "r", "d"].
-		words1.stream().map(w->w.split("")).collect(toList());
-		
+		words1.stream().map(w -> w.split("")).distinct().collect(toList());
 
 		// From the menu find the sum of all calories of all dishes
 		// menu.stream().filter(Dish::getCalories).collect(Collectors.averagingInt(get))
