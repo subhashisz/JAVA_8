@@ -1,11 +1,11 @@
-package com.myapp.stream_practices;
+package com.myapp.stream_practices.chapter5;
 
 import static com.myapp.datas.DataUtils.menu;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.joining;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.myapp.model.Dish;
 
@@ -51,15 +51,15 @@ public class StreamPractices1 {
 
 		List<String> words1 = Arrays.asList("Hello", "World");
 		// OUTPUT: ["H", "e", "l", "o","W", "r", "d"].
-		
-		//it will return String[] rather then String
-		//words1.stream().map(w -> w.split("")).distinct().forEach(System.out::println);
-		
+
+		// it will return String[] rather then String
+		// words1.stream().map(w ->
+		// w.split("")).distinct().forEach(System.out::println);
+
 		/**
 		 * FALATMAP
 		 */
-		words1.stream().map(w->w.split("")).flatMap(Arrays::stream);
-		
+		Stream<Object> chars = words1.stream().map(w -> w.split("")).flatMap(Arrays::stream);
 
 		// From the menu find the sum of all calories of all dishes
 		// menu.stream().filter(Dish::getCalories).collect(Collectors.averagingInt(get))

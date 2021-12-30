@@ -9,6 +9,29 @@ import java.util.stream.Stream;
 
 public class MergeTwoArray {
 
+	/**
+	 * Well, Java doesn't provide a helper method to concatenate arrays. However,
+	 * since Java 5, the Collections utility class has introduced an
+	 * addAll(Collection<? super T> c, T… elements) method. We can create a List
+	 * object, then call this method twice to add the two arrays to the list.
+	 * Finally, we convert the resulting List back to an array:
+	 * 
+	 * @param <T>
+	 * @param array1
+	 * @param array2
+	 * @return
+	 */
+	static <T> T[] concatWithCollection(T[] array1, T[] array2) {
+		List<T> resultList = new ArrayList<>(array1.length + array2.length);
+		Collections.addAll(resultList, array1);
+		Collections.addAll(resultList, array2);
+
+		@SuppressWarnings("unchecked")
+		// the type cast is safe as the array1 has the type T[]
+		T[] resultArray = (T[]) Array.newInstance(array1.getClass().getComponentType(), 0);
+		return resultList.toArray(resultArray);
+	}
+
 	// Stream.of() method
 	// Method to concatenate two arrays in Java 8 and above
 	public static String[] concatenate(String[] first, String[] second) {

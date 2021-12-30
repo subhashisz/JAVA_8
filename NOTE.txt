@@ -1,0 +1,2 @@
+What is fork/join framework?
+What is mutable accumulator pattern?
