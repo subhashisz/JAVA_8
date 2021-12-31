@@ -1,30 +1,52 @@
 package com.myapp.stream_practices.chapter6;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import static java.util.stream.Collectors.groupingBy;
+import static com.myapp.datas.DataUtils.menu;
 
-import com.myapp.model.Currency;
-import com.myapp.model.Trader;
-import com.myapp.model.Transaction;
+import static java.util.stream.Collectors.*;
+
+import java.util.Comparator;
+import java.util.IntSummaryStatistics;
+import java.util.Optional;
+
+import com.myapp.model.Dish;
 
 public class StreamPractices1 {
-	static Trader raoul = new Trader("Raoul", "Cambridge");
-	static Trader mario = new Trader("Mario", "Milan");
-	static Trader alan = new Trader("Alan", "Cambridge");
-	static Trader brian = new Trader("Brian", "Cambridge");
-
-	static List<Transaction> transactions = Arrays.asList(new Transaction(brian, 2011, 300, new Currency("USD")),
-			new Transaction(raoul, 2012, 1000, new Currency("USD")),
-			new Transaction(raoul, 2011, 400, new Currency("USD")),
-			new Transaction(mario, 2012, 710, new Currency("USD")),
-			new Transaction(mario, 2012, 700, new Currency("USD")),
-			new Transaction(alan, 2012, 950, new Currency("USD")));
 
 	public static void main(String[] args) {
-		Map<Currency, List<Transaction>> transactionsByCurrencies = transactions.stream()
-				.collect(groupingBy(Transaction::getCurrency));
+
+		// Collectors count
+		long howManyDishes1 = menu.stream().collect(counting());// here returns Long
+
+		// Stream count
+		long howManyDishes2 = menu.stream().count();// returns long always
+
+		// What are the differences between above two statements
+
+		Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
+		Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesComparator));
+
+		//calculate total calories
+		int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
+
+		//calculate average of total calories
+		double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
+
+		//calculate min max average  ... of total calories
+		IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
+
+		//Get all the dish names
+		String shortMenu = menu.stream().map(Dish::getDishName).collect(joining());
+		//Get all the dish names but if toString() was overrided in Dish
+		// String shortMenu1 = menu.stream().collect(joining());
+		
+		//Get all the dish names separated with comma overloaded version of joining
+		String shortMenu2 = menu.stream().map(Dish::getDishName).collect(joining(", "));
+		
+		//calculate total calories this is more generalized form
+		int totalCalories2 = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));
+		
+		
+
 	}
 
 }
