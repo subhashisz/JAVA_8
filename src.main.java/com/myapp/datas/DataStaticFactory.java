@@ -4,6 +4,7 @@ import static com.myapp.datas.AppUtils.convertIntToIntegerArray;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import com.myapp.model.Address;
@@ -15,6 +16,7 @@ import com.myapp.model.ProductDto;
 import com.myapp.model.Student;
 import com.myapp.model.Trader;
 import com.myapp.model.Transaction;
+import com.myapp.stream_practices.chapter10.OptionalExample;
 
 public class DataStaticFactory {
 
@@ -43,11 +45,16 @@ public class DataStaticFactory {
 
 	public static List<Employee> getAllEmployees() {
 		return Arrays.asList(
-				new Employee(1, "Ram", "IT", new Address("Bhubaneswar", "Odissa", "India", 751003), 25000l),
-				new Employee(2, "Sam", "Mechanical", new Address("Bombay", "Maharastra", "India", 571103), 55000l),
-				new Employee(3, "John", "Electrical", new Address("Hydrabad", "Telengana", "India", 690013), 75000l),
-				new Employee(4, "Hritik", "Computer", new Address("Bangalore", "Karnataka", "India", 560054), 253000l),
-				new Employee(5, "Arindam", "Electronics", new Address("Puri", "Odissa", "India", 560059), 253000l));
+				new Employee(1, "Ram", "IT", 25000l,
+						Optional.of(new Address("Bhubaneswar", "Odissa", "India", 751003))),
+				new Employee(2, "Sam", "Mechanical", 55000l,
+						Optional.of(new Address("Bombay", "Maharastra", "India", 571103))),
+				new Employee(3, "John", "Electrical", 75000l,
+						Optional.of(new Address("Hydrabad", "Telengana", "India", 690013))),
+				new Employee(4, "Hritik", "Computer", 253000l,
+						Optional.of(new Address("Bangalore", "Karnataka", "India", 560054))),
+				new Employee(5, "Arindam", "Electronics", 253000l,
+						Optional.of(new Address("Puri", "Odissa", "India", 560059))));
 	}
 
 	public List<Integer> getAllZips() {

@@ -1,16 +1,19 @@
 package com.myapp.model;
 
 public class Dish {
+	enum Type {
+		FISH, OTHER, MEAT
+	}
 
 	private final String dishName;
 	private final int calories;
 	private final boolean vegetarian;
 
-	public Dish(String dishName, int calories, boolean vegitarian) {
+	public Dish(String dishName, int calories, boolean vegetarian) {
 		super();
 		this.dishName = dishName;
 		this.calories = calories;
-		this.vegetarian = vegitarian;
+		this.vegetarian = vegetarian;
 	}
 
 	public String getDishName() {

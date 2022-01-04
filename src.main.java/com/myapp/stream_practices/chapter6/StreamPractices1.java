@@ -25,27 +25,34 @@ public class StreamPractices1 {
 		Comparator<Dish> dishCaloriesComparator = Comparator.comparingInt(Dish::getCalories);
 		Optional<Dish> mostCalorieDish = menu.stream().collect(maxBy(dishCaloriesComparator));
 
-		//calculate total calories
+		// calculate total calories
 		int totalCalories = menu.stream().collect(summingInt(Dish::getCalories));
 
-		//calculate average of total calories
+		// calculate average of total calories
 		double avgCalories = menu.stream().collect(averagingInt(Dish::getCalories));
 
-		//calculate min max average  ... of total calories
+		// calculate min max average ... of total calories
 		IntSummaryStatistics menuStatistics = menu.stream().collect(summarizingInt(Dish::getCalories));
 
-		//Get all the dish names
+		// Get all the dish names
 		String shortMenu = menu.stream().map(Dish::getDishName).collect(joining());
-		//Get all the dish names but if toString() was overrided in Dish
+		// Get all the dish names but if toString() was overrided in Dish
 		// String shortMenu1 = menu.stream().collect(joining());
-		
-		//Get all the dish names separated with comma overloaded version of joining
+
+		// Get all the dish names separated with comma overloaded version of joining
 		String shortMenu2 = menu.stream().map(Dish::getDishName).collect(joining(", "));
-		
-		//calculate total calories this is more generalized form
+
+		// calculate total calories this is more generalized for
 		int totalCalories2 = menu.stream().collect(reducing(0, Dish::getCalories, (i, j) -> i + j));
+
+		// highest-calorie dish
+		Optional<Dish> highestCalorieDish = menu.stream()
+				.collect(reducing((c1, c2) -> c1.getCalories() > c2.getCalories() ? c1 : c2));
 		
+		int totalCalories1 = menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
 		
+		//Best solution because lets us avoid all the auto-unboxing operations
+		int totalCalories3 = menu.stream().mapToInt(Dish::getCalories).sum();
 
 	}
 

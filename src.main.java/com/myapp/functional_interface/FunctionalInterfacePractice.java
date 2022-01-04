@@ -4,6 +4,10 @@ package com.myapp.functional_interface;
 interface MyInterface {
 	public void show();
 
+	default void meth() {
+
+	}
+
 }
 
 public class FunctionalInterfacePractice {
@@ -13,6 +17,10 @@ public class FunctionalInterfacePractice {
 		Runnable r = () -> System.out.println("Running");
 		Thread t1 = new Thread(r);
 		t1.start();
+
+	}
+
+	private void meth1() {
 
 	}
 }
